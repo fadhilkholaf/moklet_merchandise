@@ -33,8 +33,7 @@ include "header.php";
     transition-delay: 600ms;
   }
 </style>
-<section class="vh-100 pt-5 hidden-section"
-  style="background: rgb(233,35,41); background: linear-gradient(90deg, rgba(233,35,41,0.6474964985994398) 0%, rgba(0,212,255,0.7567401960784313) 90%);">
+<section class="vh-100 pt-5 hidden-section">
   <div class="container text-center mt-5">
     <div class="row pt-4">
       <div class="col-4 me-5" style="padding-top:35vh;">

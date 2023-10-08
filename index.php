@@ -1,14 +1,16 @@
 <?php
-include "header.php"
-    ?>
+include "header.php";
+?>
 <section class="vh-100 pt-auto d-flex justify-content-center align-items-center">
-    <div class="card text-center mb-3 z-1 position-absolute" style="width: 40rem; height: 20rem; border-radius: 0.125rem; background: rgba(247, 248, 250, 0.65); backdrop-filter: blur(3.5px);">
+    <div class="card text-center mb-3 z-1 position-absolute"
+        style="width: 40rem; height: 20rem; border-radius: 0.125rem; background: rgba(247, 248, 250, 0.65); backdrop-filter: blur(3.5px);">
         <div class="card-body d-flex justify-content-center align-items-center">
             <div>
                 <h1 class="card-title"><span>Official Merchandise of</span><br>
                     <span>SMK Telkom Malang</span>
                 </h1>
-                <a href="#produk" class="btn btn-primary rounded" style="background: #B02228;" >Discover our collection</a>
+                <a href="#produk" class="btn btn-primary rounded" style="background: #B02228;">Discover our
+                    collection</a>
             </div>
 
         </div>
