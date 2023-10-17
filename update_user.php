@@ -22,9 +22,9 @@ include "header.php";
             <label for="">Nama</label><br />
             <input class="w-100" type="text" name="nama" autocomplete="off"
               value="<?= $data_user['nama_user'] ?>" /><br />
-            <label class="mt-3 d-flex justify-content-between" for=""><span>Jenis Kelamin</span><span>
+            <label class="mt-3 d-flex justify-content-between" for=""><span>Jenis Kelamin</span><!--<span>
                 <?= $data_user['jenis_kelamin'] ?>
-              </span></label>
+              </span>--></label>
             <div class="border border-dark p-1 d-flex justify-content-between">
               <label for="">Laki-Laki</label>
               <input type="radio" name="jenis_kelamin" value="laki laki" <?php if ($data_user['jenis_kelamin'] === "laki laki")
@@ -41,8 +41,7 @@ include "header.php";
               value="<?= $data_user['email_user'] ?>" /><br />
             <label class="mt-3 d-flex justify-content-between"
               for=""><span>Password</span><!--<span>Generated with md5</span>--></label>
-            <input class="w-100" type="password" name="password" value="<?= $data_user['password_user'] ?>"
-              disabled /><br />
+            <input class="w-100" type="password" name="password" /><br />
             <label class="mt-3" for="">Alamat</label><br />
             <input class="w-100" type="text" name="alamat" autocomplete="off"
               value="<?= $data_user['alamat_user'] ?>" /><br />

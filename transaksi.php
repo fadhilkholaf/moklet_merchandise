@@ -31,11 +31,14 @@ $data_detail_merch = mysqli_fetch_array($query_detail_merch);
                             </div>
                             <div class="col">
                                 <div class="d-grid">
-                                    <input class="opacity-0" type="number" name="id_merch" value="<?= $data_detail_merch['id_merch'] ?>">
+                                    <input class="opacity-0" type="number" name="id_merch"
+                                        value="<?= $data_detail_merch['id_merch'] ?>">
                                     <input class="text-center" type="submit" value="+ Add to cart"
                                         style="border: 1px solid #B02228; background-color:#ffffff; text-decoration:none; color:#B02228">
                                 </div>
                             </div>
+                            <p><a href="index.php#produk" style="color:#B02228">Back to
+                                    shopping</a></p>
                         </div>
                     </form>
 

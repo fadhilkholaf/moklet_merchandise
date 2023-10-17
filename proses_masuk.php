@@ -1,9 +1,9 @@
 <?php
 include "koneksi.php";
 $email = $_POST['email'];
-$password = $_POST['password'];
+$password = md5($_POST['password']);
 if(!empty($email)||!empty($password)){
-    $query_masuk = mysqli_query($conn,"select * from user where email_user like '$email' and password_user like '".md5($password)."'");
+    $query_masuk = mysqli_query($conn,"select * from user where email_user like '$email' and password_user like '".$password."'");
     if(mysqli_num_rows($query_masuk)>0){
         $data_user = mysqli_fetch_array($query_masuk);
         session_start();
