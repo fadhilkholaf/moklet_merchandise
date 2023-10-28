@@ -1,14 +1,13 @@
 <?php
-include("header.php");
+include "header.php";
 ?>
 
-<section class="vh-100 pt-5">
+<section id="history" class="vh-100 pt-5">
     <h1 class="text-center mt-5">Your history</h1>
     <p class="text-center mt-5"><a href="index.php#produk" style="color:#B02228">Back to shopping</a></p>
-
-    <div class="container mt-5 pt-5">
+    <div class="container mt-5">
         <table class="table table-striped">
-            <tr>
+            <tr class="position-sticky top-0">
                 <th class="col">Product</th>
                 <th class="col">Name</th>
                 <th class="col">Order date</th>
@@ -18,10 +17,16 @@ include("header.php");
             </tr>
             <?php
             if ($_SESSION['status_login'] == true) {
-                $query_transaksi = mysqli_query($conn, "select * from transaksi t join detail_transaksi dt on t.id_transaksi = dt.id_transaksi where t.id_user = " . $_SESSION['id_user'] . " AND t.status_pembayaran LIKE 'sudah dibayar'");
+                $query_transaksi = mysqli_query($conn, "SELECT * FROM transaksi t 
+            JOIN detail_transaksi dt ON t.id_transaksi = dt.id_transaksi 
+            WHERE t.id_user = " . $_SESSION['id_user'] . " 
+            AND t.status_pembayaran LIKE 'sudah dibayar'
+            ORDER BY t.tgl_pemesanan DESC");
                 while ($data_transaksi = mysqli_fetch_array($query_transaksi)) {
-                    $query_merch = mysqli_query($conn, "SELECT * FROM merch WHERE id_merch IN (SELECT id_merch FROM detail_transaksi dt, transaksi t WHERE dt.id_transaksi = ".$data_transaksi['id_transaksi']." AND t.id_user = " . $_SESSION['id_user'] . ")");
-                    //$query_merch = mysqli_query($conn, "select * from merch where id_merch = " . $data_transaksi['id_merch'] . "");
+                    $query_merch = mysqli_query($conn, "SELECT * FROM merch 
+                WHERE id_merch IN (SELECT id_merch FROM detail_transaksi dt, transaksi t 
+                WHERE dt.id_transaksi = " . $data_transaksi['id_transaksi'] . " 
+                AND t.id_user = " . $_SESSION['id_user'] . ")");
                     $data_merch = mysqli_fetch_array($query_merch)
                         ?>
                     <tr>
@@ -43,7 +48,7 @@ include("header.php");
                         </td>
                         <td class="col" style="vertical-align: middle;">Rp.
                             <?= number_format($data_transaksi['total_harga']) ?>
-                            </th>
+                        </td>
                     </tr>
                     <?php
                 }
@@ -52,6 +57,7 @@ include("header.php");
         </table>
     </div>
 </section>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
