@@ -4,7 +4,7 @@ include "header.php";
 <section class="vh-100 pt-5">
     <h1 class="text-center mt-5">Your cart items</h1>
     <p class="text-center mt-5"><a href="index.php#product" style="color:#B02228">Back to shopping</a></p>
-    <div class="container mt-5 pt-5 pb-5">
+    <div class="container mt-5 pb-5" style="height: 60vh; overflow-y: scroll;">
         <table class="table table-striped">
             <tr>
                 <th class="col-6">Product</th>
@@ -58,7 +58,7 @@ include "header.php";
                             </h6>
                             <h6 class="text-center p-1 rounded mt-3"
                                 style="background-color:#B02228; border: 1px solid #B02228; text-decoration:none;">
-                                <a href="cart.checkout.php?id_transaksi=<?= $data_transaksi['id_transaksi'] ?>"
+                                <a href="cart.checkout.php?id_transaksi=<?= $data_transaksi['id_transaksi'] ?>&checkout=single"
                                     style="text-decoration:none; color: #ffffff;">Check-out</a>
                             </h6>
                         </td>
@@ -68,6 +68,8 @@ include "header.php";
             }
             ?>
         </table>
+    </div>
+    <div class="container mt-5">
         <?php
         if ($_SESSION['status_login'] == true) {
             if (mysqli_num_rows($query_transaksi) > 0) {
@@ -76,7 +78,8 @@ include "header.php";
                     <div class="col-2 me-2">
                         <h6 class="text-center p-2 rounded"
                             style="background-color:#B02228; border: 1px solid #B02228; text-decoration:none;">
-                            <a href="cart.checkoutAll.php" style="text-decoration:none; color: #ffffff;">Check-out All</a>
+                            <a href="cart.checkout.php?checkout=all" style="text-decoration:none; color: #ffffff;">Check-out
+                                All</a>
                         </h6>
                     </div>
                 </div>

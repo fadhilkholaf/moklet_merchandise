@@ -30,9 +30,9 @@ include "header.php";
                 ?>
                 <a href="transaction.php?id_merch=<?= $data_merch['id_merch'] ?>" style="text-decoration:none;">
                     <div class="col">
-                        <div class="card border border-0" style="width: 18rem;">
+                        <div class="card border border-0" style="width: 15rem;">
                             <img src="data:image/jpeg;base64,<?= base64_encode($data_merch['foto_merch']) ?>"
-                                alt="<?= $data_merch['nama_merch'] ?>" style="width: 17.5rem; height: 17.5rem;">
+                                alt="<?= $data_merch['nama_merch'] ?>" style="width: 16rem; height: 15rem;">
                             <div class="card-body">
                                 <h6 class="card-text">
                                     <?= $data_merch['nama_merch'] ?>

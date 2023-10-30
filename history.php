@@ -4,8 +4,8 @@ include "header.php";
 
 <section id="history" class="vh-100 pt-5">
     <h1 class="text-center mt-5">Your history</h1>
-    <p class="text-center mt-5"><a href="index.php#produk" style="color:#B02228">Back to shopping</a></p>
-    <div class="container mt-5">
+    <p class="text-center mt-5"><a href="index.php#product" style="color:#B02228">Back to shopping</a></p>
+    <div class="container mt-5"  style="height: 70vh; overflow-y: scroll;">
         <table class="table table-striped">
             <tr class="position-sticky top-0">
                 <th class="col">Product</th>

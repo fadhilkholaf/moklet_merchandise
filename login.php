@@ -45,14 +45,14 @@
               <div class="row">
                 <div class="col">
                   <p>
-                    <a class="text-dark" href="lupa_pass.html"
+                    <a class="text-dark" href="login.forgot.php"
                       >Forgot password ?</a
                     >
                   </p>
                 </div>
                 <div class="col">
                   <p class="text-end text-dark">
-                    <a class="text-dark" href="signup.html"
+                    <a class="text-dark" href="signup.php"
                       >Don't have account ?</a
                     >
                   </p>

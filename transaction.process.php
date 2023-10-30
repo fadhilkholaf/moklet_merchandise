@@ -2,7 +2,7 @@
 include "koneksi.php";
 session_start();
 if ($_SESSION['status_login'] == false) {
-    echo "<script>alert('Login Before Making A Transaction');location.href='login.html';</script>";
+    echo "<script>alert('Login Before Making A Transaction');location.href='login.php';</script>";
 } elseif ($_POST['quantity'] < 1) {
     echo "<script>alert('Minimum Purchase Of 1 Item');location.href='transaction.php?id_merch=" . $_POST['id_merch'] . "';</script>";
 } else {
