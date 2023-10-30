@@ -1,10 +1,14 @@
 <?php
 include "koneksi.php";
 session_start();
+$query_merch = mysqli_query($conn, "select * from merch where id_merch = " . $_POST['id_merch'] . "");
+$data_merch = mysqli_fetch_array($query_merch);
 if ($_SESSION['status_login'] == false) {
     echo "<script>alert('Login Before Making A Transaction');location.href='login.php';</script>";
 } elseif ($_POST['quantity'] < 1) {
     echo "<script>alert('Minimum Purchase Of 1 Item');location.href='transaction.php?id_merch=" . $_POST['id_merch'] . "';</script>";
+} elseif ($_POST['quantity'] > $data_merch['stok_merch']) {
+    echo "<script>alert('Out Of Stock');location.href='transaction.php?id_merch=" . $_POST['id_merch'] . "';</script>";
 } else {
     $query_user = mysqli_query($conn, "select * from user where id_user = " . $_SESSION['id_user'] . "");
     $data_user = mysqli_fetch_array($query_user);

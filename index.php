@@ -9,7 +9,7 @@ include "header.php";
                 <h1 class="card-title"><span>Official Merchandise of</span><br>
                     <span>SMK Telkom Malang</span>
                 </h1>
-                <a href="#produk" class="btn btn-primary rounded" style="background: #B02228;">Discover our
+                <a href="#product" class="btn btn-primary rounded" style="background: #B02228;">Discover our
                     collection</a>
             </div>
 

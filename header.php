@@ -63,7 +63,7 @@ if (!empty($_SESSION['id_user'])) {
                     <?php
                     if ($_SESSION['status_login'] == true) {
                         echo '<li><a class="dropdown-item sub-text">' . $_SESSION['nama_user'] . '</a></li>';
-                        echo '<li><a class="dropdown-item sub-text" href="user.php">Ubah Profil</a></li>';
+                        echo '<li><a class="dropdown-item sub-text" href="user.php">Update Profile</a></li>';
                         echo '<li><a class="dropdown-item sub-text" href="logout.php">Logout</a></li>';
                     } else {
                         echo '<li><a class="dropdown-item sub-text" href="login.php">Login</a></li>';
