@@ -41,7 +41,6 @@ $data_detail_merch = mysqli_fetch_array($query_detail_merch);
                                     shopping</a></p>
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>

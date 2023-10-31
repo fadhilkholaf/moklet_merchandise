@@ -30,9 +30,21 @@ include "header.php";
                 ?>
                 <a href="transaction.php?id_merch=<?= $data_merch['id_merch'] ?>" style="text-decoration:none;">
                     <div class="col">
-                        <div class="card border border-0" style="width: 15rem;">
+                        <div class="card border  rounded" style="width: 17rem;">
+                            <div class="position-absolute m-2">
+                                <?php
+                                if ($data_merch['stok_merch'] <= 0) { ?>
+                                    <p class="bg-warning rounded p-1">Out Of Stock</p>
+                                    <?php
+                                }else{
+                                    ?>
+                                    <p class="bg-warning rounded p-1"><?= $data_merch['stok_merch'] ?> Available</p>
+                                    <?php
+                                }
+                                ?>
+                            </div>
                             <img src="data:image/jpeg;base64,<?= base64_encode($data_merch['foto_merch']) ?>"
-                                alt="<?= $data_merch['nama_merch'] ?>" style="width: 16rem; height: 15rem;">
+                                alt="<?= $data_merch['nama_merch'] ?>" style="width: 17rem; height: 14rem;">
                             <div class="card-body">
                                 <h6 class="card-text">
                                     <?= $data_merch['nama_merch'] ?>

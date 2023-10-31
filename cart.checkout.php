@@ -19,10 +19,16 @@ if ($_GET['checkout'] == "single") {
         $data_detail_transaksi = mysqli_fetch_array($query_detail_transaksi);
         $query_merch = mysqli_query($conn, "select * from merch where id_merch = " . $data_transaksi['id_merch'] . "");
         $data_merch = mysqli_fetch_array($query_merch);
-        mysqli_query($conn, "UPDATE `merch` SET `stok_merch`='" . $data_merch['stok_merch'] - $data_detail_transaksi['banyak_barang'] . "' WHERE id_merch = " . $data_transaksi['id_merch'] . "");
+        if ($data_detail_transaksi['banyak_barang'] > $data_merch['stok_merch']) {
+            //echo "<script>alert('Some Merch Out Of Stock');location.href='cart.php';</script>";
+            echo "gagal <br>";
+        } else {
+            mysqli_query($conn, "UPDATE `merch` SET `stok_merch`='" . $data_merch['stok_merch'] - $data_detail_transaksi['banyak_barang'] . "' WHERE id_merch = " . $data_transaksi['id_merch'] . "");
+            mysqli_query($conn, "update transaksi set status_pembayaran = 'sudah dibayar', tgl_pembayaran = '" . $formatted_time . "' where id_transaksi = (select id_transaksi from detail_transaksi where id_merch = " . $data_transaksi['id_merch'] . ")");
+        }
     }
-    mysqli_query($conn, "update transaksi set status_pembayaran = 'sudah dibayar', tgl_pembayaran = '" . $formatted_time . "' where id_user = " . $_SESSION['id_user'] . " and status_pembayaran = 'belum dibayar'");
-    echo "<script>alert('Checkout Successfuly');location.href='cart.php';</script>";
+    //mysqli_query($conn, "update transaksi set status_pembayaran = 'sudah dibayar', tgl_pembayaran = '" . $formatted_time . "' where id_user = " . $_SESSION['id_user'] . " and status_pembayaran = 'belum dibayar'");
+    //echo "<script>alert('Checkout Successfuly');location.href='cart.php';</script>";
 }
 //AKU BINGONG
 //     A

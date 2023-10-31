@@ -2,18 +2,18 @@
 include "koneksi.php";
 $email = $_POST['email'];
 $password = md5($_POST['password']);
-if(!empty($email)||!empty($password)){
-    $query_masuk = mysqli_query($conn,"select * from user where email_user like '$email' and password_user like '".$password."'");
-    if(mysqli_num_rows($query_masuk)>0){
+if (!empty($email) || !empty($password)) {
+    $query_masuk = mysqli_query($conn, "select * from user where email_user like '$email' and password_user like '" . $password . "'");
+    if (mysqli_num_rows($query_masuk) > 0) {
         $data_user = mysqli_fetch_array($query_masuk);
         session_start();
         $_SESSION['id_user'] = $data_user['id_user'];
         $_SESSION['nama_user'] = $data_user['nama_user'];
         header('location: index.php');
-    }else{
+    } else {
         echo "<script>alert('User tidak ditemukan');location.href='login.php';</script>";
     }
-}else{
+} else {
     echo "<script>alert('Data tidak boleh kosong');location.href='login.php';</script>";
 }
 ?>
