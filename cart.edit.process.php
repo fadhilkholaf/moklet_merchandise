@@ -1,8 +1,12 @@
 <?php
 include "koneksi.php";
 session_start();
+$query_merch = mysqli_query($conn, "select * from merch where id_merch = (select id_merch from detail_transaksi where id_transaksi = " . $_POST['id_transaksi'] . ")");
+$data_merch = mysqli_fetch_array($query_merch);
 if ($_POST['quantity'] < 1) {
-    echo "<script>alert('Minimum pembelian 1 barang');location.href='cart.edit.php?id_transaksi=" . $_POST['id_transaksi'] . "';</script>";
+    echo "<script>alert('Minimum Purchase Of 1 Item');location.href='cart.edit.php?id_transaksi=" . $_POST['id_transaksi'] . "';</script>";
+} elseif ($_POST['quantity'] > $data_merch['stok_merch']) {
+    echo "<script>alert('Out Of Stock');location.href='cart.edit.php?id_transaksi=" . $_POST['id_transaksi'] . "';</script>";
 } else {
     $query_merch = mysqli_query($conn, "select * from merch where id_merch = " . $_POST['id_merch'] . "");
     $data_merch = mysqli_fetch_array($query_merch);

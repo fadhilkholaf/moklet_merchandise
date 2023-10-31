@@ -9,6 +9,7 @@ if (!empty($email) || !empty($password)) {
         session_start();
         $_SESSION['id_user'] = $data_user['id_user'];
         $_SESSION['nama_user'] = $data_user['nama_user'];
+        $_SESSION['role'] = $data_user['role'];
         header('location: index.php');
     } else {
         echo "<script>alert('User tidak ditemukan');location.href='login.php';</script>";

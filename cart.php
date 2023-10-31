@@ -23,7 +23,7 @@ include "header.php";
                         <td class="col-6">
                             <div class="row grid gap-0 column-gap-3 py-3">
                                 <div class="col-3">
-                                    <img src="data:image/jpeg;base64,<?= base64_encode($data_merch['foto_merch']) ?>"
+                                    <img class="rounded shadow" src="data:image/jpeg;base64,<?= base64_encode($data_merch['foto_merch']) ?>"
                                         alt="<?= $data_merch['nama_merch'] ?>" style="width: 10rem; height: 8rem;">
                                 </div>
                                 <div class="col">
@@ -53,14 +53,14 @@ include "header.php";
                             </h6>
                         </td>
                         <td class="col-2 text-end" style="vertical-align: middle;">
-                            <h6 style="color:#B02228">Rp.
+                            <h6 class="mb-3" style="color:#B02228">Rp.
                                 <?php echo number_format($data_transaksi['total_harga']) ?>
                             </h6>
-                            <h6 class="text-center p-1 rounded mt-3"
+                            <a href="cart.checkout.php?id_transaksi=<?= $data_transaksi['id_transaksi'] ?>&checkout=single"
+                                class="text-center p-1 rounded"
                                 style="background-color:#B02228; border: 1px solid #B02228; text-decoration:none;">
-                                <a href="cart.checkout.php?id_transaksi=<?= $data_transaksi['id_transaksi'] ?>&checkout=single"
-                                    style="text-decoration:none; color: #ffffff;">Check-out</a>
-                            </h6>
+                                <span class="px-5" style="text-decoration:none; color: #ffffff;">Check-out</span>
+                            </a>
                         </td>
                     </tr>
                     <?php

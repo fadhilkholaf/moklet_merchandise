@@ -30,8 +30,8 @@ include "header.php";
                     $data_merch = mysqli_fetch_array($query_merch)
                         ?>
                     <tr>
-                        <td class="d-flex align-items-center grid gap-0 column-gap-3 col">
-                            <img src="data:image/jpeg;base64,<?= base64_encode($data_merch['foto_merch']) ?>"
+                        <td class="py-2 d-flex align-items-center grid gap-0 column-gap-3 col">
+                            <img class="rounded shadow-sm" src="data:image/jpeg;base64,<?= base64_encode($data_merch['foto_merch']) ?>"
                                 alt="<?= $data_merch['nama_merch'] ?>" style="width: 10rem; height: 8rem;">
                         </td>
                         <td class="col" style="vertical-align: middle;">
