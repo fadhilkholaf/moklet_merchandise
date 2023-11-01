@@ -8,7 +8,7 @@ $data_detail_merch = mysqli_fetch_array($query_detail_merch);
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <img src="data:image/jpeg;base64,<?php echo base64_encode($data_detail_merch['foto_merch']) ?>"
+                    <img class="rounded shadow-lg" src="data:image/jpeg;base64,<?php echo base64_encode($data_detail_merch['foto_merch']) ?>"
                         alt="<?php echo $data_detail_merch['nama_merch'] ?>" style="width: 33rem; height: 33rem;">>
                 </div>
                 <div class="col d-flex align-items-center">

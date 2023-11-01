@@ -1,68 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-    />
-    <title>Document</title>
-  </head>
-  <body>
-    <style>
-      * {
-        font-family: "Poppins", sans-serif;
-      }
-    </style>
-    <section class="vh-100 d-flex align-items-center justify-content-center">
-      <div class="card p-3" style="width: 30rem">
-        <div class="card-body">
-          <div class="mx-auto" style="width: 10rem">
-            <img class="img-fluid" src="components/logo-moklet.png" alt="" />
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" />
+  <title>Sign In</title>
+</head>
+
+<body>
+  <style>
+    * {
+      font-family: "Poppins", sans-serif;
+    }
+  </style>
+  <section class="vh-100 d-flex align-items-center justify-content-center">
+    <div class="card p-3 z-1 rounded" style="width: 30rem; border-radius: 0.125rem; background: rgba(247, 248, 250, 0.65); backdrop-filter: blur(3.5px);">
+      <div class="card-body">
+        <div class="mx-auto" style="width: 10rem">
+          <img class="img-fluid" src="components/logo-moklet.png" alt="" />
+        </div>
+        <p class="card-title text-center h3 mt-3">Moklet Merchandise</p>
+        <div class="row row-cols-1 mt-3">
+          <div class="col">
+            <form action="login.process.php" method="post">
+              <label for="">Email</label><br />
+              <input class="w-100" type="email" name="email" /><br />
+              <label class="mt-3" for="">Password</label><br />
+              <input class="w-100" type="password" name="password" /><br />
+              <input class="mt-4 w-100 text-light border border-0 rounded" type="submit" value="Login"
+                style="background-color: #e92329" />
+            </form>
           </div>
-          <p class="card-title text-center h3 mt-3">Moklet Merchandise</p>
-          <div class="row row-cols-1 mt-3">
-            <div class="col">
-              <form action="login.process.php" method="post">
-                <label for="">Email</label><br />
-                <input class="w-100" type="email" name="email" /><br />
-                <label class="mt-3" for="">Password</label><br />
-                <input class="w-100" type="password" name="password" /><br />
-                <input
-                  class="mt-4 w-100 text-light border border-0 rounded"
-                  type="submit"
-                  value="Login"
-                  style="background-color: #e92329"
-                />
-              </form>
-            </div>
-            <div class="col mt-3">
-              <div class="row">
-                <div class="col">
-                  <p>
-                    <a class="text-dark" href="login.forgot.php"
-                      >Forgot password ?</a
-                    >
-                  </p>
-                </div>
-                <div class="col">
-                  <p class="text-end text-dark">
-                    <a class="text-dark" href="signup.php"
-                      >Don't have account ?</a
-                    >
-                  </p>
-                </div>
+          <div class="col mt-3">
+            <div class="row">
+              <div class="col">
+                <p>
+                  <a class="text-dark" href="login.forgot.php">Forgot password ?</a>
+                </p>
+              </div>
+              <div class="col">
+                <p class="text-end text-dark">
+                  <a class="text-dark" href="signup.php">Don't have account ?</a>
+                </p>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
+    </div>
+    <img src="components/header-img.png" alt="Moklet Merch" class="img-fluid z-0 position-absolute vh-100 vw-100">
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
 </html>

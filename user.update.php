@@ -40,8 +40,8 @@ if (empty($nama) || empty($jenis_kelamin) || empty($email) || empty($alamat)) {
     }
 
     //FOTO UPDATE
+    $dir = "components/profile/";
     if (!empty($_FILES["foto"]) && $_FILES["foto"]["size"] < (5 * 1024 * 1024)) {
-        $dir = "components/profile/";
         $targetFile = $dir . basename($_SESSION['id_user']);
         move_uploaded_file($_FILES["foto"]["tmp_name"], $targetFile);
         $foto = mysqli_real_escape_string($conn, file_get_contents($targetFile));
