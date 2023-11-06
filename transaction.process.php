@@ -4,7 +4,7 @@ session_start();
 $query_merch = mysqli_query($conn, "select * from merch where id_merch = " . $_POST['id_merch'] . "");
 $data_merch = mysqli_fetch_array($query_merch);
 if ($_SESSION['status_login'] == false) {
-    echo "<script>alert('Login Before Making A Transaction');location.href='login.php';</script>";
+    echo "<script>alert('Login Before Making A Transaction');location.href='login.html';</script>";
 } elseif ($_POST['quantity'] < 1) {
     echo "<script>alert('Minimum Purchase Of 1 Item');location.href='transaction.php?id_merch=" . $_POST['id_merch'] . "';</script>";
 } elseif ($_POST['quantity'] > $data_merch['stok_merch']) {

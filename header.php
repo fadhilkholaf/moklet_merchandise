@@ -76,7 +76,7 @@ if (!empty($_SESSION['id_user'])) {
                         echo '<li><a class="dropdown-item sub-text" href="topup.php">Balance Rp. ' . number_format($data_user['saldo']) . '</a></li>';
                         echo '<li><a class="dropdown-item sub-text" href="logout.php">Logout</a></li>';
                     } else {
-                        echo '<li><a class="dropdown-item sub-text" href="login.php">Login</a></li>';
+                        echo '<li><a class="dropdown-item sub-text" href="login.html">Login</a></li>';
                     }
                     ?>
                 </ul>

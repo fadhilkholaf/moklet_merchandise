@@ -31,8 +31,8 @@ if ($_SESSION['status_login'] == false || $_SESSION['role'] == 'member') {
         $harga = '';
         $id = null;
         if ($_GET) {
-          $query_merch = mysqli_query($conn, "select * from merch where id_merch = " . $_GET['id_merch'] . "");
-          $data_merch_edit = mysqli_fetch_array($query_merch);
+          $query_merch_edit = mysqli_query($conn, "select * from merch where id_merch = " . $_GET['id_merch'] . "");
+          $data_merch_edit = mysqli_fetch_array($query_merch_edit);
           $nama = $data_merch_edit['nama_merch'];
           $stok = $data_merch_edit['stok_merch'];
           $harga = $data_merch_edit['harga_merch'];
@@ -44,7 +44,8 @@ if ($_SESSION['status_login'] == false || $_SESSION['role'] == 'member') {
             src="data:image/jpeg;base64,<?= base64_encode($data_merch_edit['foto_merch']) ?>"
             alt="Select Product To Edit" style="width: 18rem; height: 18rem;">
         </a>
-        <form class="px-5 col col-8" action="admin.addProduct.php" method="post" enctype="multipart/form-data">
+        <form class="px-5 col col-8" action="admin.product.edit.php" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="id_merch" value="<?= $id ?>">
           <label for="">Name</label><br />
           <input class="w-100" type="text" name="nama" value="<?= $nama ?>" autocomplete="off" /><br />
           <label for="">Stock</label><br />

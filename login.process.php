@@ -12,9 +12,9 @@ if (!empty($email) || !empty($password)) {
         $_SESSION['role'] = $data_user['role'];
         header('location: index.php');
     } else {
-        echo "<script>alert('User tidak ditemukan');location.href='login.php';</script>";
+        echo "<script>alert('User tidak ditemukan');location.href='login.html';</script>";
     }
 } else {
-    echo "<script>alert('Data tidak boleh kosong');location.href='login.php';</script>";
+    echo "<script>alert('Data tidak boleh kosong');location.href='login.html';</script>";
 }
 ?>
