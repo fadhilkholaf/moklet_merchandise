@@ -62,7 +62,6 @@
         </div>
       </div>
     </div>
-    <img src="components/header-img.png" alt="Moklet Merch" class="img-fluid z-0 position-absolute vh-100 vw-100">
   </section>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>

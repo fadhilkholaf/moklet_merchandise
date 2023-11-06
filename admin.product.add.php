@@ -8,7 +8,7 @@ $stok = $_POST['stok'];
 $targetDirectory = "components/produk/";
 if ($_FILES["foto"]["size"] <= (5 * 1024 * 1024)) {
     if (!empty($_FILES["foto"]) && !empty($nama) && !empty($stok) && !empty($harga)) {
-        $targetFile = $targetDirectory . basename($_FILES["foto"]["name"]);
+        $targetFile = $targetDirectory . basename($nama);
         if (move_uploaded_file($_FILES["foto"]["tmp_name"], $targetFile)) {
             $foto = mysqli_real_escape_string($conn, file_get_contents($targetFile));
             $merch_query = "INSERT INTO merch (nama_merch, foto_merch, harga_merch, stok_merch) VALUES ('$nama', '$foto', '$harga', '$stok')";

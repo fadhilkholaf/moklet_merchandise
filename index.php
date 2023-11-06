@@ -25,12 +25,13 @@ include "header.php";
         <div class="py-3 row row-cols-lg-4 d-flex justify-content-center grid gap-0 row-gap-5"
             style="height: 70vh; overflow-y: scroll;">
             <?php
-            $query_merch = mysqli_query($conn, "select * from merch");
+            $query_merch = mysqli_query($conn, "SELECT * FROM merch ORDER BY stok_merch DESC");
             while ($data_merch = mysqli_fetch_array($query_merch)) {
                 ?>
-                <a href="transaction.php?id_merch=<?= $data_merch['id_merch'] ?>" style="text-decoration:none;">
+                <a <?= $data_merch['stok_merch'] <= 0 ? "onclick=\"alert('Out Of Stock')\"" : "href=\"transaction.php?id_merch=" . $data_merch['id_merch'] . "\"" ?> style="text-decoration:none;">
                     <div class="col">
-                        <div class="card border shadow rounded" style="width: 17rem;">
+                        <div class="card border shadow rounded"
+                            style="width: 17rem; <?= $data_merch['stok_merch'] <= 0 ? "filter:brightness(50%)" : ""; ?>">
                             <div class="position-absolute m-3">
                                 <?php
                                 if ($data_merch['stok_merch'] <= 0) { ?>
@@ -45,7 +46,8 @@ include "header.php";
                                 }
                                 ?>
                             </div>
-                            <img class="align-self-center mt-2 shadow rounded" src="data:image/jpeg;base64,<?= base64_encode($data_merch['foto_merch']) ?>"
+                            <img class="align-self-center mt-2 shadow rounded"
+                                src="data:image/jpeg;base64,<?= base64_encode($data_merch['foto_merch']) ?>"
                                 alt="<?= $data_merch['nama_merch'] ?>" style="width: 16rem; height: 13.5rem;">
                             <div class="card-body">
                                 <h6 class="card-text">

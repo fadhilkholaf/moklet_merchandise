@@ -2,14 +2,14 @@
 include "header.php";
 if ($_SESSION['status_login'] == false || $_SESSION['role'] == 'member') {
   echo "<script>location.href='index.php';</script>";
-  exit();
 }
 ?>
 <section class="pt-5 vh-100">
+  <h1 class="mt-5 text-center">Product</h1>
   <div class="row row-cols-2 m-0 d-flex justify-content-between">
     <div class="mt-5 col">
       <p class="ms-5">Add Product</p>
-      <form class="px-5" action="admin.addProduct.php" method="post" enctype="multipart/form-data">
+      <form class="px-5" action="admin.product.add.php" method="post" enctype="multipart/form-data">
         <label for="">Name</label><br />
         <input class="w-100" type="text" name="nama" autocomplete="off" /><br />
         <label for="">Stock</label><br />
@@ -29,17 +29,21 @@ if ($_SESSION['status_login'] == false || $_SESSION['role'] == 'member') {
         $nama = '';
         $stok = '';
         $harga = '';
+        $id = null;
         if ($_GET) {
           $query_merch = mysqli_query($conn, "select * from merch where id_merch = " . $_GET['id_merch'] . "");
           $data_merch_edit = mysqli_fetch_array($query_merch);
           $nama = $data_merch_edit['nama_merch'];
           $stok = $data_merch_edit['stok_merch'];
           $harga = $data_merch_edit['harga_merch'];
+          $id = $_GET['id_merch'];
         }
         ?>
-        <img class="rounded shadow p-0 col"
-          src="data:image/jpeg;base64,<?= base64_encode($data_merch_edit['foto_merch']) ?>" alt="Select Product To Edit"
-          style="width: 18rem; height: 18rem;">
+        <a href="admin.php" class="col col-4 p-0">
+          <img class="rounded shadow p-0"
+            src="data:image/jpeg;base64,<?= base64_encode($data_merch_edit['foto_merch']) ?>"
+            alt="Select Product To Edit" style="width: 18rem; height: 18rem;">
+        </a>
         <form class="px-5 col col-8" action="admin.addProduct.php" method="post" enctype="multipart/form-data">
           <label for="">Name</label><br />
           <input class="w-100" type="text" name="nama" value="<?= $nama ?>" autocomplete="off" /><br />
@@ -52,7 +56,8 @@ if ($_SESSION['status_login'] == false || $_SESSION['role'] == 'member') {
           <div class="d-flex grid gap-0 column-gap-5">
             <input class="mt-4 w-100 text-light border border-0 rounded" type="submit" value="Edit product"
               style="background-color: #e92329" />
-            <a href="" class="text-center mt-4 w-100 text-light border border-0 rounded"
+            <a href="admin.product.delete.php?id_merch=<?= $id ?>"
+              class="text-center mt-4 w-100 text-light border border-0 rounded"
               style="background-color: #e92329; text-decoration:none;">Delete
               Product</a>
           </div>
@@ -62,10 +67,10 @@ if ($_SESSION['status_login'] == false || $_SESSION['role'] == 'member') {
   </div>
   <p class="ms-5 mt-5 ps-3">Click To Edit</p>
   <div class="d-flex justify-content-center">
-    <div class="mx-5 m-0 py-3 row row-cols-lg-6 d-flex justify-content-between grid gap-0 row-gap-5"
-      style="height: 35vh; overflow-y: scroll;">
+    <div class="mx-5 m-0 py-3 row row-cols-lg-6 d-flex grid gap-0 row-gap-5"
+      style="width:100%;height: 35vh; overflow-y: scroll;">
       <?php
-      $query_merch = mysqli_query($conn, "select * from merch");
+      $query_merch = mysqli_query($conn, "SELECT * FROM merch ORDER BY stok_merch DESC");
       while ($data_merch = mysqli_fetch_array($query_merch)) {
         ?>
         <a href="admin.php?id_merch=<?= $data_merch['id_merch'] ?>" style="text-decoration:none;">
