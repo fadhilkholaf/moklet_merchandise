@@ -15,48 +15,46 @@ include "header.php";
 
         </div>
     </div>
-    <img src="components/header-img.png" alt="Moklet Merch" class="img-fluid z-0 position-absolute">
+    <img src="components/header-img.png" alt="Moklet Merch" class="z-0 position-absolute img-fluid">
 </section>
 
 <section id="product" class="vh-100 pt-5">
     <h1 class="text-center mt-5">Product</h1>
     <p class="text-center">Grab it fast!</p>
     <div class="container mt-5">
-        <div class="py-3 row row-cols-lg-4 d-flex justify-content-center grid gap-0 row-gap-5"
-            style="height: 70vh; overflow-y: scroll;">
+        <div class="py-3 row d-flex flex-wrap grid gap-0 row-gap-5" style="height: 70vh; overflow-y: scroll;">
             <?php
             $query_merch = mysqli_query($conn, "SELECT * FROM merch ORDER BY stok_merch DESC");
             while ($data_merch = mysqli_fetch_array($query_merch)) {
                 ?>
-                <a <?= $data_merch['stok_merch'] <= 0 ? "onclick=\"alert('Out Of Stock')\"" : "href=\"transaction.php?id_merch=" . $data_merch['id_merch'] . "\"" ?> style="text-decoration:none;">
-                    <div class="col">
-                        <div class="card border shadow rounded"
-                            style="width: 17rem; <?= $data_merch['stok_merch'] <= 0 ? "filter:brightness(50%)" : ""; ?>">
-                            <div class="position-absolute m-3">
+                <a class="col d-flex justify-content-center" <?= $data_merch['stok_merch'] <= 0 ? "onclick=\"alert('Out Of Stock')\"" : "href=\"transaction.php?id_merch=" . $data_merch['id_merch'] . "\"" ?>
+                    style="text-decoration:none; height:18.5rem;">
+                    <div class="card border shadow rounded "
+                        style="width: 17rem; <?= $data_merch['stok_merch'] <= 0 ? "filter:brightness(50%)" : ""; ?>">
+                        <div class="position-absolute m-3">
+                            <?php
+                            if ($data_merch['stok_merch'] <= 0) { ?>
+                                <p class="bg-warning rounded p-1">Out Of Stock</p>
                                 <?php
-                                if ($data_merch['stok_merch'] <= 0) { ?>
-                                    <p class="bg-warning rounded p-1">Out Of Stock</p>
-                                    <?php
-                                } else {
-                                    ?>
-                                    <p class="bg-warning rounded p-1">
-                                        <?= $data_merch['stok_merch'] ?> Available
-                                    </p>
-                                    <?php
-                                }
+                            } else {
                                 ?>
-                            </div>
-                            <img class="align-self-center mt-2 shadow rounded"
-                                src="data:image/jpeg;base64,<?= base64_encode($data_merch['foto_merch']) ?>"
-                                alt="<?= $data_merch['nama_merch'] ?>" style="width: 16rem; height: 13.5rem;">
-                            <div class="card-body">
-                                <h6 class="card-text">
-                                    <?= $data_merch['nama_merch'] ?>
-                                </h6>
-                                <h6 class="card-text text-end" style="color:#B02228">Rp.
-                                    <?= number_format($data_merch['harga_merch']) ?>
-                                </h6>
-                            </div>
+                                <p class="bg-warning rounded p-1">
+                                    <?= $data_merch['stok_merch'] ?> Available
+                                </p>
+                                <?php
+                            }
+                            ?>
+                        </div>
+                        <img class="align-self-center mt-2 shadow rounded"
+                            src="data:image/jpeg;base64,<?= base64_encode($data_merch['foto_merch']) ?>"
+                            alt="<?= $data_merch['nama_merch'] ?>" style="width: 16rem; height: 13.5rem;">
+                        <div class="card-body">
+                            <h6 class="card-text">
+                                <?= $data_merch['nama_merch'] ?>
+                            </h6>
+                            <h6 class="card-text text-end" style="color:#B02228">Rp.
+                                <?= number_format($data_merch['harga_merch']) ?>
+                            </h6>
                         </div>
                     </div>
                 </a>

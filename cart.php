@@ -23,15 +23,16 @@ include "header.php";
                         <td class="col-6">
                             <div class="row grid gap-0 column-gap-3 py-3">
                                 <div class="col-3">
-                                    <img class="rounded shadow" src="data:image/jpeg;base64,<?= base64_encode($data_merch['foto_merch']) ?>"
-                                        alt="<?= $data_merch['nama_merch'] ?>" style="width: 10rem; height: 8rem;">
+                                    <img class="rounded shadow"
+                                        src="data:image/jpeg;base64,<?= base64_encode($data_merch['foto_merch']) ?>" alt=""
+                                        style="width: 10rem; height: 8rem;">
                                 </div>
                                 <div class="col">
                                     <h3>
-                                        <?php echo $data_merch['nama_merch'] ?>
+                                        <?= empty($data_merch['nama_merch']) ? "This Product Is Not Available" : $data_merch['nama_merch']; ?>
                                     </h3>
                                     <p class="pt-2">
-                                        <a href="cart.edit.php?id_transaksi=<?= $data_transaksi['id_transaksi'] ?>"
+                                        <a <?= empty($data_merch['stok_merch']) ? "onclick=\"alert('Not Available')\"" : "href=\"cart.edit.php?id_transaksi=" . $data_transaksi['id_transaksi'] . "\"" ?>
                                             style="color:#B02228">Edit</a>
                                     </p>
                                     <p class="pt-2">
@@ -43,7 +44,7 @@ include "header.php";
                         </td>
                         <td class="col-2" style="vertical-align: middle;">
                             <h6 style="color:#B02228">Rp.
-                                <?php echo number_format($data_merch['harga_merch']) ?>
+                                <?= empty($data_merch['nama_merch']) ? 0 : number_format($data_merch['harga_merch']); ?>
                             </h6>
                         </td>
                         <td class="col-2 text-center" style="vertical-align: middle;">
@@ -54,12 +55,13 @@ include "header.php";
                         </td>
                         <td class="col-2 text-end" style="vertical-align: middle;">
                             <h6 class="mb-3" style="color:#B02228">Rp.
-                                <?php echo number_format($data_transaksi['total_harga']) ?>
+                                <?= empty($data_merch['nama_merch']) ? 0 : number_format($data_transaksi['total_harga']); ?>
                             </h6>
                             <a href="cart.checkout.php?id_transaksi=<?= $data_transaksi['id_transaksi'] ?>&checkout=single"
                                 class="text-center p-1 rounded"
                                 style="background-color:#B02228; border: 1px solid #B02228; text-decoration:none;">
-                                <span class="px-5" style="text-decoration:none; color: #ffffff;">Check-out</span>
+                                <span class="px-5"
+                                    style="text-decoration:none; color: #ffffff; <?= empty($data_merch['nama_merch']) ? "filter:brightness(50%)" : ""; ?>">Check-out</span>
                             </a>
                         </td>
                     </tr>
