@@ -103,6 +103,44 @@ if ($_SESSION['status_login'] == false || $_SESSION['role'] == 'member') {
     </div>
   </div>
 </section>
+<section class="pt-5 vh-100">
+  <h1 class="mt-5 text-center">User</h1>
+  <div class="container">
+    <table class="table table-striped">
+      <tr class="position-sticky top-0">
+        <th class="col">Id</th>
+        <th class="col">Name</th>
+        <th class="col">Email</th>
+        <th class="col" colspan="2">Role</th>
+      </tr>
+      <?php
+      $query_user = mysqli_query($conn, "select * from user where id_user not like " . $_SESSION['id_user'] . " order by id_user desc");
+      while ($data_user = mysqli_fetch_array($query_user)) {
+        ?>
+        <tr>
+          <td class="col" style="vertical-align: middle;">
+            <?= $data_user['id_user'] ?>
+          </td>
+          <td class="col" style="vertical-align: middle;">
+            <?= $data_user['nama_user'] ?>
+          </td>
+          <td class="col" style="vertical-align: middle;">
+            <?= $data_user['email_user'] ?>
+          </td>
+          <td class="col" style="vertical-align: middle;">
+            <?= $data_user['role'] ?>
+          </td>
+          <td>
+            <button type="button" class="btn btn-outline-danger float-end ms-2">Delete</button>
+            <button type="button" class="btn btn-outline-warning float-end">Update</button>
+          </td>
+        </tr>
+        <?php
+      }
+      ?>
+    </table>
+  </div>
+</section>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
