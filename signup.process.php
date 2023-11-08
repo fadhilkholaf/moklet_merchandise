@@ -19,7 +19,7 @@ if (!empty($data_unique['email_user'])) {
     if (empty($nama) || empty($jenis_kelamin) || empty($email) || empty($password) || empty($alamat)) {
         echo "<script>alert('Data tidak boleh kosong');location.href='signup.html';</script>";
     } else {
-        $daftar = mysqli_query($conn, "insert into user (nama_user,jenis_kelamin,email_user,password_user,alamat_user,saldo,role) value ('$nama','$jenis_kelamin','$email','$password','$alamat','10000','member')");
+        $daftar = mysqli_query($conn, "insert into user (nama_user,jenis_kelamin,email_user,password_user,alamat_user,saldo,role) value ('$nama','$jenis_kelamin','$email','$password','$alamat','1000000','member')");
 
         //INSERT FOTO JIKA ADA
         if (!empty($_FILES["foto"])) {

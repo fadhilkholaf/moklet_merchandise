@@ -103,10 +103,10 @@ if ($_SESSION['status_login'] == false || $_SESSION['role'] == 'member') {
     </div>
   </div>
 </section>
-<section class="pt-5 vh-100">
+<section id="user" class="pt-5 vh-100">
   <h1 class="mt-5 text-center">User</h1>
   <div class="container">
-    <table class="table table-striped">
+    <table class="table table-striped mt-5">
       <tr class="position-sticky top-0">
         <th class="col">Id</th>
         <th class="col">Name</th>
@@ -114,7 +114,7 @@ if ($_SESSION['status_login'] == false || $_SESSION['role'] == 'member') {
         <th class="col" colspan="2">Role</th>
       </tr>
       <?php
-      $query_user = mysqli_query($conn, "select * from user where id_user not like " . $_SESSION['id_user'] . " order by id_user desc");
+      $query_user = mysqli_query($conn, "select * from user where id_user not like " . $_SESSION['id_user'] . " order by id_user asc");
       while ($data_user = mysqli_fetch_array($query_user)) {
         ?>
         <tr>
@@ -131,8 +131,10 @@ if ($_SESSION['status_login'] == false || $_SESSION['role'] == 'member') {
             <?= $data_user['role'] ?>
           </td>
           <td>
-            <button type="button" class="btn btn-outline-danger float-end ms-2">Delete</button>
-            <button type="button" class="btn btn-outline-warning float-end">Update</button>
+            <a href="admin.user.delete.php?id_user=<?= $data_user['id_user'] ?>" type="button" class="btn btn-outline-danger float-end ms-2" onclick="return confirm('Delete user <?= $data_user['nama_user'] ?> ?')" >Delete</a>
+            <a href="admin.user.edit.php?id_user=<?= $data_user['id_user'] ?>&role=<?= $data_user['role'] ?>"
+              type="button" class="btn btn-outline-warning float-end"
+              onclick="return confirm('Update role to <?= $data_user['role'] == 'member' ? 'admin' : 'member'; ?> ?')">Update</a>
           </td>
         </tr>
         <?php

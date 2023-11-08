@@ -73,7 +73,7 @@ if (!empty($_SESSION['id_user'])) {
                     if ($_SESSION['status_login'] == true) {
                         echo '<li><a class="dropdown-item sub-text" href="user.php">' . $_SESSION['nama_user'] . '</a></li>';
                         echo '<li><a class="dropdown-item sub-text" href="user.php">Update Profile</a></li>';
-                        echo '<li><a class="dropdown-item sub-text" href="topup.php">Balance Rp. ' . number_format($data_user['saldo']) . '</a></li>';
+                        echo '<li><a class="dropdown-item sub-text">Balance Rp. ' . number_format($data_user['saldo']) . '</a></li>';
                         echo '<li><a class="dropdown-item sub-text" href="logout.php">Logout</a></li>';
                     } else {
                         echo '<li><a class="dropdown-item sub-text" href="login.html">Login</a></li>';
